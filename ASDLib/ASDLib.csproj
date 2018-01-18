@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A28D7630-EBF6-4A73-A5B9-09C6FAED199F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ASDLib</RootNamespace>
+    <AssemblyName>ASDLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ReleaseVersion>20.17.05.13</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>bookshelf.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Grafi\Grafo.cs" />
+    <Compile Include="Grafi\Nodo.cs" />
+    <Compile Include="Alberi\BST.cs" />
+    <Compile Include="Ordinamenti\Heap.cs" />
+    <Compile Include="Ordinamenti\InsertionSort.cs" />
+    <Compile Include="Ordinamenti\MergeSort.cs" />
+    <Compile Include="Ordinamenti\MergeSort_Cormen.cs" />
+    <Compile Include="Ordinamenti\QuickSort_Nico_Lomuto.cs" />
+    <Compile Include="Ordinamenti\QuickSort_Tony_Hoare.cs" />
+    <Compile Include="Vector\Vector.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="bookshelf.ico" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grafi", "Grafi\Grafi.csproj", "{D828E1C8-AD80-43ED-8DE6-D06F1CB87B5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alberi", "Alberi\Alberi.csproj", "{9954F574-42D9-4672-B0D2-9F5E559034E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordinamenti", "Ordinamenti\Ordinamenti.csproj", "{2552A46C-BF85-4954-A57A-29FC0BA29C0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Complessita", "Complessita\Complessita.csproj", "{9E26C6F6-D296-46B3-8973-EB6B8E2AD0C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visualizzatore", "Visualizzatore\Visualizzatore.csproj", "{2DBDB143-6E92-4AA2-8933-24E9EC791973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASDLib", "ASDLib\ASDLib.csproj", "{A28D7630-EBF6-4A73-A5B9-09C6FAED199F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2552A46C-BF85-4954-A57A-29FC0BA29C0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2552A46C-BF85-4954-A57A-29FC0BA29C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2552A46C-BF85-4954-A57A-29FC0BA29C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2552A46C-BF85-4954-A57A-29FC0BA29C0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DBDB143-6E92-4AA2-8933-24E9EC791973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DBDB143-6E92-4AA2-8933-24E9EC791973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DBDB143-6E92-4AA2-8933-24E9EC791973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DBDB143-6E92-4AA2-8933-24E9EC791973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9954F574-42D9-4672-B0D2-9F5E559034E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9954F574-42D9-4672-B0D2-9F5E559034E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9954F574-42D9-4672-B0D2-9F5E559034E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9954F574-42D9-4672-B0D2-9F5E559034E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E26C6F6-D296-46B3-8973-EB6B8E2AD0C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E26C6F6-D296-46B3-8973-EB6B8E2AD0C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E26C6F6-D296-46B3-8973-EB6B8E2AD0C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E26C6F6-D296-46B3-8973-EB6B8E2AD0C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A28D7630-EBF6-4A73-A5B9-09C6FAED199F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A28D7630-EBF6-4A73-A5B9-09C6FAED199F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A28D7630-EBF6-4A73-A5B9-09C6FAED199F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A28D7630-EBF6-4A73-A5B9-09C6FAED199F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D828E1C8-AD80-43ED-8DE6-D06F1CB87B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D828E1C8-AD80-43ED-8DE6-D06F1CB87B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D828E1C8-AD80-43ED-8DE6-D06F1CB87B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D828E1C8-AD80-43ED-8DE6-D06F1CB87B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		version = 20.17.05.13
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
