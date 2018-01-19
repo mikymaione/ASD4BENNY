@@ -464,10 +464,15 @@ namespace Grafi
             return qualcuno_minore;
         }
 
+        public void Algo_20170126_1()
+        {
+
+        }
+
         /// <summary>
         /// O(V(V+E))
         /// </summary>
-        public void Algo_20170126()
+        public void Algo_20170126_2()
         {
             Action<Nodo> myBFS = (s) =>
             {
