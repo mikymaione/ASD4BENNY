@@ -466,10 +466,10 @@ namespace Grafi
         {
             Console.WriteLine($"Algo_20170126_1({Nome})");
 
-            Action<Stack<List<Nodo>>, Nodo, Nodo> simple_paths = null;
-            simple_paths = (P, s, n) =>
+            Action<Dictionary<Nodo, HashSet<Nodo>>, Nodo, Nodo> simple_paths = null;
+            simple_paths = (Paths, s, n) =>
             {
-                var L = P.Peek();
+                var L = Paths.Peek();
                 L.Add(n);
 
                 n.color = Nodo.Color.Gray;
@@ -477,8 +477,8 @@ namespace Grafi
                 foreach (var v in Adj[n])
                     if (v.color == Nodo.Color.White)
                     {
-                        simple_paths(P, s, v);
-                        P.Push(new List<Nodo>(L));
+                        simple_paths(Paths, s, v);
+                        Paths.Push(new List<Nodo>(L));
                     }
 
                 n.color = Nodo.Color.White; //simple paths
@@ -486,13 +486,11 @@ namespace Grafi
 
             foreach (var s in V)
             {
-                var P = new Stack<List<Nodo>>();
-                P.Push(new List<Nodo>());
-
-                simple_paths(P, s, s);
+                var Paths = new Dictionary<Nodo, HashSet<Nodo>>();
+                simple_paths(Paths, s, s);
 
                 Console.WriteLine($"P da {s.N}: ");
-                foreach (var L in P)
+                foreach (var L in Paths)
                     if (L.Count > 1)
                     {
                         foreach (var l in L)
