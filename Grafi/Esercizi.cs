@@ -464,7 +464,42 @@ namespace Grafi
         /// </summary>
         public void Algo_20170126_1()
         {
+            Console.WriteLine($"Algo_20170126_1({Nome})");
 
+            Action<Stack<List<Nodo>>, Nodo, Nodo> simple_paths = null;
+            simple_paths = (P, s, n) =>
+            {
+                var L = P.Peek();
+                L.Add(n);
+
+                n.color = Nodo.Color.Gray;
+
+                foreach (var v in Adj[n])
+                    if (v.color == Nodo.Color.White)
+                    {
+                        simple_paths(P, s, v);
+                        P.Push(new List<Nodo>(L));
+                    }
+
+                n.color = Nodo.Color.White; //simple paths
+            };
+
+            foreach (var s in V)
+            {
+                var P = new Stack<List<Nodo>>();
+                P.Push(new List<Nodo>());
+
+                simple_paths(P, s, s);
+
+                Console.WriteLine($"P da {s.N}: ");
+                foreach (var L in P)
+                    if (L.Count > 1)
+                    {
+                        foreach (var l in L)
+                            Console.Write($"{l.N}→");
+                        Console.WriteLine();
+                    }
+            }
         }
 
         /// <summary>
