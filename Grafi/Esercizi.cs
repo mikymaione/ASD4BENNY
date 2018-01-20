@@ -464,6 +464,9 @@ namespace Grafi
             return qualcuno_minore;
         }
 
+        /// <summary>
+        /// Dato il grafo orientato G verificare se ∃ u,v,z | {[∃1 π | (u⇝v⇝z)] ∧ [∃ π | (x⇝u⇝z⇝v)]}
+        /// </summary>
         public void Algo_20170126_1()
         {
 
