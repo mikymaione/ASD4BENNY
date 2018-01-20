@@ -175,8 +175,6 @@ namespace Grafi
                 esiste = dfs_visit_2(b);
             }
 
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-
             if (esiste)
                 Console.WriteLine("Nel grafo {0}, tutti i percorsi {1} ~> {2} ~> {3} ~> ∞ sono veri" + Environment.NewLine, Nome, a.N, c.N, b.N);
             else
@@ -198,7 +196,6 @@ namespace Grafi
                     break;
                 }
 
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.WriteLine("Nel grafo {0}, {1}esiste un ciclo di {2} nodi", Nome, (ciclo_da_x ? "" : "Non "), x);
 
             SCC_Print(scc);
@@ -244,7 +241,6 @@ namespace Grafi
             dfs(n_a);
             var r = (Ciclo && !ElaborazioneTerminataENessunCicloTrovato);
 
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.WriteLine("Nel grafo {0}, {1}esiste un percorso {2} ~> {3} ~> {4} ~> ∞", Nome, (r ? "" : "Non "), a, b, c);
 
             return r;
@@ -290,7 +286,6 @@ namespace Grafi
             passati_tutti = (n_a.color != Nodo.Color.White && n_b.color != Nodo.Color.White && n_c.color != Nodo.Color.White && n_d.color != Nodo.Color.White);
             r = (r && ciclo && passati_tutti);
 
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.WriteLine("Nel grafo {0}, {1}esiste un percorso {2} ~> {3} ~> {4} ~> {5} ~> ∞", Nome, (r ? "" : "Non "), a, b, c, d);
 
             return r;

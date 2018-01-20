@@ -13,6 +13,8 @@ namespace Grafi
 
         static void Main(string[] args)
         {
+            System.Console.OutputEncoding = System.Text.Encoding.UTF8;
+
             Main1(args);
         }
 
