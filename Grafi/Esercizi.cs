@@ -334,6 +334,7 @@ namespace Grafi
                     {
                         y.Pred = x;
                         Visita(y);
+                        //x.color = Nodo.Color.White;
                     }
 
                 x.color = Nodo.Color.White;
@@ -464,40 +465,7 @@ namespace Grafi
         /// </summary>
         public void Algo_20170126_1()
         {
-            Console.WriteLine($"Algo_20170126_1({Nome})");
 
-            Action<Dictionary<Nodo, HashSet<Nodo>>, Nodo, Nodo> simple_paths = null;
-            simple_paths = (Paths, s, n) =>
-            {
-                var L = Paths.Peek();
-                L.Add(n);
-
-                n.color = Nodo.Color.Gray;
-
-                foreach (var v in Adj[n])
-                    if (v.color == Nodo.Color.White)
-                    {
-                        simple_paths(Paths, s, v);
-                        Paths.Push(new List<Nodo>(L));
-                    }
-
-                n.color = Nodo.Color.White; //simple paths
-            };
-
-            foreach (var s in V)
-            {
-                var Paths = new Dictionary<Nodo, HashSet<Nodo>>();
-                simple_paths(Paths, s, s);
-
-                Console.WriteLine($"P da {s.N}: ");
-                foreach (var L in Paths)
-                    if (L.Count > 1)
-                    {
-                        foreach (var l in L)
-                            Console.Write($"{l.N}→");
-                        Console.WriteLine();
-                    }
-            }
         }
 
         /// <summary>

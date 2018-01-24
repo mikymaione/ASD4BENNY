@@ -15,7 +15,43 @@ namespace Grafi
         {
             System.Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            Main1(args);
+            //Main1(args);
+            MainAlg_20160219(args);
+        }
+
+        static void MainAlg_20160219(string[] args)
+        {
+            var E_Completo = new dynamic[,]
+            {
+                { 1, 2 },
+                { 2, 1 },
+                { 1, 3 },
+                { 3, 1 },
+                { 2, 4 },
+                { 4, 2 },
+                { 3, 4 },
+                { 4, 3 },
+                { 2, 6 },
+                { 6, 2 },
+                { 5, 4 },
+                { 4, 5 },
+                { 5, 8 },
+                { 8, 5 },
+                { 7, 6 },
+                { 6, 7 },
+                { 10, 8 },
+                { 8, 10 },
+                { 10, 9 },
+                { 9, 10 },
+                { 7, 9 },
+                { 9, 7 },
+            };
+
+            var A = new dynamic[] { 2, 4, 5, 6 };
+
+            var G0 = new Esercizi("G0 E_Completo");
+            G0.add_edges(E_Completo);
+            G0.Alg_20160219(A, 3, 9);
         }
 
         static void Main2(string[] args)

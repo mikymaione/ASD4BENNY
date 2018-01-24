@@ -14,7 +14,7 @@ namespace Alberi
 
         static void Main(string[] args)
         {
-            Main20171016(args);
+            Main_20170224_2(args);
         }
 
         static void MainAlgo_MarcoErnestoFiorillo(string[] args)
@@ -232,7 +232,7 @@ namespace Alberi
             T2.Stampa();
         }
 
-        static void MainEsercizi_20170224(string[] args)
+        static void Main_20170224_2(string[] args)
         {
             var x = 25;
             var n = new int[] { 8, 3, 10, 1, 6, 4, 7, 14, 13 };
@@ -245,10 +245,10 @@ namespace Alberi
             T1.Stampa();
 
             Console.WriteLine("Ricorsivo:");
-            var ret = Esercizi_20170224.Algo(T1, null, x);
+            var ret = Esercizi.Algo_20170224_2(T1, null, x);
 
             Console.WriteLine("Iterativo:");
-            var ret2 = Esercizi_20170224.Algo_Miky(T2, null, x);
+            var ret2 = Esercizi.Algo_20170224_2_Miky(T2, null, x);
 
             Console.WriteLine("Albero alla fine ricorsivo: " + ret);
             T1.Stampa();

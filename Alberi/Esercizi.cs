@@ -14,6 +14,101 @@ namespace Alberi
 
         public Esercizi(int k) : base(k) { }
 
+        public static int Algo_20170224_2(BST T, BST P, int x)
+        {
+            var ret = 0;
+
+            if (T != null)
+            {
+                var r_sx = Algo_20170224_2(T.sx, T, x);
+                var r_dx = Algo_20170224_2(T.dx, T, x);
+
+                ret = r_sx + r_dx + 1;
+                Console.WriteLine($"n: {T.key} | ret: {ret}");
+
+                if (T.key % 2 == 0 && ret < x && P != null)
+                {
+                    if (T == P.dx)
+                        P.dx = Cancella(T);
+                    else
+                        P.sx = Cancella(T);
+                }
+            }
+
+            return ret;
+        }
+
+        public static int Algo_20170224_2_Miky(BST T_, BST P_, int x)
+        {
+            var ret = 0;
+            var P = P_;
+
+            BST last = null;
+            BST next = null;
+            BST curr = T_;
+
+            var S_T = new Stack<BST>();
+            var S_P = new Stack<BST>();
+            var S_Ret = new Stack<int>();
+
+            while (S_T.Count > 0 || curr != null)
+            {
+                if (curr != null)
+                {
+                    //discesa sx                    
+                    S_T.Push(curr);
+                    next = curr.Sx;
+
+                    S_P.Push(last);
+                    S_Ret.Push(0); // ret = 0
+                }
+                else
+                {
+                    curr = S_T.Peek(); //risalita
+                    P = S_P.Peek();
+
+                    if (curr.Dx != null && curr.Dx != last)
+                    {
+                        //discesa a dx
+                        next = curr.Dx;
+                    }
+                    else
+                    {
+                        //risale da dx o da dx vuoto
+                        next = null;
+                        S_T.Pop();
+                        S_P.Pop();
+
+                        var r_sx = 0;
+                        var r_dx = 0;
+
+                        if (curr == P?.sx)
+                            r_sx = S_Ret.Pop();
+                        else if (curr == P?.dx)
+                            r_dx = S_Ret.Pop();
+                        
+                        ret = r_sx + r_dx + 1;
+                        Console.WriteLine($"n: {curr.key} | ret: {ret}");
+                        
+                        S_Ret.Push(ret);
+
+                        if (curr.key % 2 == 0 && ret < x && P != null)
+                        {
+                            if (curr == P.dx)
+                                P.dx = Cancella(curr);
+                            else
+                                P.sx = Cancella(curr);
+                        }
+                    }
+                }
+
+                last = curr; //applica operazione di discesa
+                curr = next; //o di risalita
+            }
+
+            return ret;
+        }
+
         public static void Algo_MarcoErnestoFiorillo(BST T)
         {
             if (T != null)
