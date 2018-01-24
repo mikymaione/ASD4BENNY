@@ -333,8 +333,7 @@ namespace Grafi
                     if (y.color == Nodo.Color.White)
                     {
                         y.Pred = x;
-                        Visita(y);
-                        //x.color = Nodo.Color.White;
+                        Visita(y);                        
                     }
 
                 x.color = Nodo.Color.White;
