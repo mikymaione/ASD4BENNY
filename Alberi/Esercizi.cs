@@ -24,7 +24,7 @@ namespace Alberi
                 var r_dx = Algo_20170224_2(T.dx, T, x);
 
                 ret = r_sx + r_dx + 1;
-                Console.WriteLine($"n: {T.key} | ret: {ret}");
+                Console.WriteLine($"n: {T.key} | r_sx: {r_sx} r_dx: {r_dx} ret: {ret}");
 
                 if (T.key % 2 == 0 && ret < x && P != null)
                 {
@@ -38,66 +38,75 @@ namespace Alberi
             return ret;
         }
 
-        public static int Algo_20170224_2_Miky(BST T_, BST P_, int x)
+        //funziona
+        public static int Algo_20170224_2_Miky(BST T, BST P, int x)
         {
-            var ret = 0;
-            var P = P_;
-
             BST last = null;
             BST next = null;
-            BST curr = T_;
+            BST curr = T;
+            var S = new Stack<BST>();
 
-            var S_T = new Stack<BST>();
-            var S_P = new Stack<BST>();
-            var S_Ret = new Stack<int>();
+            var S_RET = new Stack<int>();
+            var ret = 0;
+            var r_sx = 0;
+            var r_dx = 0;
 
-            while (S_T.Count > 0 || curr != null)
+            while (S.Count > 0 || curr != null)
             {
                 if (curr != null)
                 {
-                    //discesa sx                    
-                    S_T.Push(curr);
+                    //discesa sx
+                    S.Push(curr);
                     next = curr.Sx;
 
-                    S_P.Push(last);
-                    S_Ret.Push(0); // ret = 0
+                    ret = 0;
                 }
                 else
                 {
-                    curr = S_T.Peek(); //risalita
-                    P = S_P.Peek();
+                    curr = S.Peek(); //risalita
 
                     if (curr.Dx != null && curr.Dx != last)
                     {
                         //discesa a dx
                         next = curr.Dx;
+                        
+                        S_RET.Push(ret);
+                        ret = 0;
                     }
                     else
                     {
                         //risale da dx o da dx vuoto
                         next = null;
-                        S_T.Pop();
-                        S_P.Pop();
+                        S.Pop();
 
-                        var r_sx = 0;
-                        var r_dx = 0;
+                        P = (S.Count > 0 ? S.Peek() : null);
 
-                        if (curr == P?.sx)
-                            r_sx = S_Ret.Pop();
-                        else if (curr == P?.dx)
-                            r_dx = S_Ret.Pop();
-                        
+                        if (curr.dx != null)
+                        {
+                            r_sx = S_RET.Pop();
+                            r_dx = ret;
+                        }
+                        else
+                        {
+                            r_sx = ret;
+                            r_dx = 0;
+                        }
+
                         ret = r_sx + r_dx + 1;
-                        Console.WriteLine($"n: {curr.key} | ret: {ret}");
-                        
-                        S_Ret.Push(ret);
+                        Console.WriteLine($"n: {curr.key} | r_sx: {r_sx} r_dx: {r_dx} ret: {ret}");
 
                         if (curr.key % 2 == 0 && ret < x && P != null)
                         {
                             if (curr == P.dx)
-                                P.dx = Cancella(curr);
+                            {
+                                curr = Cancella(curr);
+                                P.dx = curr;
+                            }
                             else
-                                P.sx = Cancella(curr);
+                            {
+                                curr = Cancella(curr);
+                                P.sx = curr;
+                            }
                         }
                     }
                 }
