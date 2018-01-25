@@ -240,21 +240,12 @@ namespace Alberi
 
             var T1 = new BST(n);
             var T2 = new BST(n);
-
-            Console.WriteLine("Albero prima di iniziare:");
-            T1.Stampa();
-
+            
             Console.WriteLine("Ricorsivo:");
             var ret = Esercizi.Algo_20170224_2(T1, null, x);
 
             Console.WriteLine("Iterativo:");
-            var ret2 = Esercizi.Algo_20170224_2_Miky(T2, null, x);
-
-            Console.WriteLine("Albero alla fine ricorsivo: " + ret);
-            T1.Stampa();
-
-            Console.WriteLine("Albero alla fine iterativo: " + ret2);
-            T2.Stampa();
+            var ret2 = Esercizi.Algo_20170224_2_Miky(T2, T2, x);
         }
 
         static void MainCountOddRic(string[] args)

@@ -36,6 +36,83 @@ namespace Alberi
             return ret;
         }
 
+        //non funziona di nessuna maniera!
+        public static int Algo_20170224_2_CiroMart(BST T, BST P, int x)
+        {
+            BST last = null;
+            BST curr = T;
+            var S = new Stack<BST>();
+
+            var stack_a = new Stack<int>();
+            var a = 0;
+            var b = 0;
+            var ret = 0;
+
+            while (S.Count > 0 || curr != null)
+            {
+                if (curr != null)
+                {
+                    //discesa sx
+                    S.Push(curr);
+                    curr = curr.Sx;
+                    ret = 0;
+                }
+                else
+                {
+                    curr = S.Peek(); //risalita
+
+                    if (curr.Dx != null && curr.Dx != last)
+                    {
+                        //discesa a dx
+                        curr = curr.Dx;
+                        a = ret;
+                        stack_a.Push(a);
+                        ret = 0;
+                    }
+                    else
+                    {
+                        //risale da dx o da dx vuoto                        
+                        S.Pop();
+                        P = (S.Count > 0 ? S.Peek() : null);
+
+                        if (curr.dx != null)
+                        {
+                            a = stack_a.Pop();
+                            b = ret;
+                        }
+                        else
+                        {
+                            a = ret;
+                            b = 0;
+                        }
+
+                        ret = a + b + 1;
+
+                        Console.WriteLine($"n: {curr.key} | r_sx: {a} r_dx: {b} ret: {ret}");
+
+                        if (curr.key % 2 == 0 && ret < x && P != null)
+                        {
+                            if (curr == P.dx)
+                            {
+                                curr = Cancella(curr);
+                                P.dx = curr;
+                            }
+                            else
+                            {
+                                curr = Cancella(curr);
+                                P.sx = curr;
+                            }
+                        }
+                    }
+
+                    last = curr;
+                    curr = null;
+                }
+            }
+
+            return ret;
+        }
+
         //funziona perfettamente
         public static int Algo_20170224_2_Miky(BST T, BST P, int x)
         {
