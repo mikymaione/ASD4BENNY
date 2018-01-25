@@ -81,13 +81,15 @@ namespace Alberi
 
                         P = (S.Count > 0 ? S.Peek() : null);
 
-                        if (curr.dx != null)
+                        if (curr == P?.dx)
                         {
+                            //sono un destro
                             r_sx = S_RET.Pop();
                             r_dx = ret;
                         }
                         else
                         {
+                            //sono un sinistro
                             r_sx = ret;
                             r_dx = 0;
                         }
