@@ -36,17 +36,20 @@ namespace Alberi
             return ret;
         }
 
-        //non funziona di nessuna maniera!
+        //aggiustato da me e funziona!
         public static int Algo_20170224_2_CiroMart(BST T, BST P, int x)
         {
             BST last = null;
+            BST next = null;
             BST curr = T;
             var S = new Stack<BST>();
 
-            var stack_a = new Stack<int>();
-            var a = 0;
-            var b = 0;
+            var S_RET = new Stack<int>();
+            var r_sx = 0;
+            var r_dx = 0;
             var ret = 0;
+
+            var ero_destro = false;
 
             while (S.Count > 0 || curr != null)
             {
@@ -54,7 +57,8 @@ namespace Alberi
                 {
                     //discesa sx
                     S.Push(curr);
-                    curr = curr.Sx;
+                    next = curr.Sx;
+
                     ret = 0;
                 }
                 else
@@ -64,31 +68,36 @@ namespace Alberi
                     if (curr.Dx != null && curr.Dx != last)
                     {
                         //discesa a dx
-                        curr = curr.Dx;
-                        a = ret;
-                        stack_a.Push(a);
+                        next = curr.Dx;
+
+                        S_RET.Push(ret);
+                        r_sx = ret;
                         ret = 0;
                     }
                     else
                     {
-                        //risale da dx o da dx vuoto                        
+                        //risale da dx o da dx vuoto
+                        next = null;
                         S.Pop();
-                        P = (S.Count > 0 ? S.Peek() : null);
 
-                        if (curr.dx != null)
+                        P = (S.Count > 0 ? S.Peek() : null);                        
+
+                        if (ero_destro)
                         {
-                            a = stack_a.Pop();
-                            b = ret;
+                            r_sx = S_RET.Pop();
+                            r_dx = ret;
                         }
                         else
                         {
-                            a = ret;
-                            b = 0;
+                            r_sx = ret;
+                            r_dx = 0;
                         }
 
-                        ret = a + b + 1;
+                        ero_destro = (curr == P?.dx);
 
-                        Console.WriteLine($"n: {curr.key} | r_sx: {a} r_dx: {b} ret: {ret}");
+                        ret = r_sx + r_dx + 1;
+
+                        Console.WriteLine($"n: {curr.key} | r_sx: {r_sx} r_dx: {r_dx} ret: {ret}");
 
                         if (curr.key % 2 == 0 && ret < x && P != null)
                         {
@@ -104,10 +113,10 @@ namespace Alberi
                             }
                         }
                     }
-
-                    last = curr;
-                    curr = null;
                 }
+
+                last = curr; //applica operazione di discesa
+                curr = next; //o di risalita                
             }
 
             return ret;

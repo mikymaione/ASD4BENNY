@@ -241,11 +241,11 @@ namespace Alberi
             var T1 = new BST(n);
             var T2 = new BST(n);
             
-            Console.WriteLine("Ricorsivo:");
+            Console.WriteLine("\nRicorsivo:");
             var ret = Esercizi.Algo_20170224_2(T1, null, x);
 
-            Console.WriteLine("Iterativo:");
-            var ret2 = Esercizi.Algo_20170224_2_Miky(T2, T2, x);
+            Console.WriteLine("\nIterativo:");
+            var ret2 = Esercizi.Algo_20170224_2_CiroMart(T2, T2, x);
         }
 
         static void MainCountOddRic(string[] args)
