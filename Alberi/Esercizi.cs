@@ -16,29 +16,27 @@ namespace Alberi
 
         public static int Algo_20170224_2(BST T, BST P, int x)
         {
-            var ret = 0;
+            if (T == null)
+                return 0;
 
-            if (T != null)
+            var r_sx = Algo_20170224_2(T.sx, T, x);
+            var r_dx = Algo_20170224_2(T.dx, T, x);
+            var ret = r_sx + r_dx + 1;
+
+            Console.WriteLine($"n: {T.key} | r_sx: {r_sx} r_dx: {r_dx} ret: {ret}");
+
+            if (T.key % 2 == 0 && ret < x && P != null)
             {
-                var r_sx = Algo_20170224_2(T.sx, T, x);
-                var r_dx = Algo_20170224_2(T.dx, T, x);
-
-                ret = r_sx + r_dx + 1;
-                Console.WriteLine($"n: {T.key} | r_sx: {r_sx} r_dx: {r_dx} ret: {ret}");
-
-                if (T.key % 2 == 0 && ret < x && P != null)
-                {
-                    if (T == P.dx)
-                        P.dx = Cancella(T);
-                    else
-                        P.sx = Cancella(T);
-                }
+                if (T == P.dx)
+                    P.dx = Cancella(T);
+                else
+                    P.sx = Cancella(T);
             }
 
             return ret;
         }
 
-        //funziona
+        //funziona perfettamente
         public static int Algo_20170224_2_Miky(BST T, BST P, int x)
         {
             BST last = null;
@@ -46,10 +44,9 @@ namespace Alberi
             BST curr = T;
             var S = new Stack<BST>();
 
-            var S_RET = new Stack<int>();
+            var S_r_sx = new Stack<int>();
+            var S_r_dx = new Stack<int>();
             var ret = 0;
-            var r_sx = 0;
-            var r_dx = 0;
 
             while (S.Count > 0 || curr != null)
             {
@@ -59,7 +56,8 @@ namespace Alberi
                     S.Push(curr);
                     next = curr.Sx;
 
-                    ret = 0;
+                    S_r_sx.Push(0);
+                    S_r_dx.Push(0);
                 }
                 else
                 {
@@ -69,9 +67,6 @@ namespace Alberi
                     {
                         //discesa a dx
                         next = curr.Dx;
-                        
-                        S_RET.Push(ret);
-                        ret = 0;
                     }
                     else
                     {
@@ -81,20 +76,16 @@ namespace Alberi
 
                         P = (S.Count > 0 ? S.Peek() : null);
 
-                        if (curr == P?.dx)
-                        {
-                            //sono un destro
-                            r_sx = S_RET.Pop();
-                            r_dx = ret;
-                        }
-                        else
-                        {
-                            //sono un sinistro
-                            r_sx = ret;
-                            r_dx = 0;
-                        }
+                        var r_sx = S_r_sx.Pop();
+                        var r_dx = S_r_dx.Pop();
 
                         ret = r_sx + r_dx + 1;
+
+                        if (curr == P?.sx)
+                            S_r_sx.Push(S_r_sx.Pop() + ret);
+                        else if (curr == P?.dx)
+                            S_r_dx.Push(S_r_dx.Pop() + ret);
+
                         Console.WriteLine($"n: {curr.key} | r_sx: {r_sx} r_dx: {r_dx} ret: {ret}");
 
                         if (curr.key % 2 == 0 && ret < x && P != null)
