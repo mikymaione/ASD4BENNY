@@ -14,6 +14,46 @@ namespace Grafi
 
         public Esercizi(string nome) : base(nome) { }
 
+        public void Alg_20180125_1(dynamic[] B, dynamic s)
+        {
+            var NB = new Nodo[B.Length];
+
+            for (var i = 0; i < B.Length; i++)
+                NB[i] = get_nodo(B[i]);
+
+            var G2 = Alg_20180125_1_(NB, get_nodo(s));
+            G2.Stampa();
+        }
+
+        private Grafo Alg_20180125_1_(Nodo[] B, Nodo s)
+        {
+            var G2 = new Grafo($"Massimo sottografo di {Nome}");
+            var GT = Trasposto($"Trasposto di {Nome}", true);
+
+            foreach (var b in B)
+                b.color = Nodo.Color.Black;
+
+            Action<Nodo> dfs_visita = null;
+            dfs_visita = (u) =>
+            {
+                u.color = Nodo.Color.Gray;
+
+                foreach (var v in GT.Adj[u])
+                    if (v.color == Nodo.Color.White)
+                    {
+                        v.Pred = u;
+                        G2.add_edge(v.N, u.N);
+
+                        dfs_visita(v);
+                    }
+
+                u.color = Nodo.Color.White; //così puoi gestire i percorsi paralleli e le biforcazioni esempio grafo "G2 E_DAG2"
+            };
+
+            dfs_visita(s);
+
+            return G2;
+        }
 
         public void Alg_20171016(dynamic[] B)
         {
@@ -333,7 +373,7 @@ namespace Grafi
                     if (y.color == Nodo.Color.White)
                     {
                         y.Pred = x;
-                        Visita(y);                        
+                        Visita(y);
                     }
 
                 x.color = Nodo.Color.White;

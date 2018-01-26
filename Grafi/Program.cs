@@ -15,8 +15,7 @@ namespace Grafi
         {
             System.Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            //Main1(args);
-            MainAlg_20160219(args);
+            Main1(args);
         }
 
         static void MainAlg_20160219(string[] args)
@@ -702,8 +701,13 @@ namespace Grafi
             G8.Algo_20170224(F);
             */
 
-            G0.Algo_20170126_1();
+            G0.Alg_20180125_1(new dynamic[] { 1, 2, 3 }, 6);
+            G1.Alg_20180125_1(new dynamic[] { 8 }, 9);
+            G2.Alg_20180125_1(new dynamic[] { 5, 61 }, 10);
+            G3.Alg_20180125_1(new dynamic[] { 1 }, 6);
+
             /*
+            G0.Algo_20170126_1();            
             G1.Algo_20170126_1();
             G2.Algo_20170126_1();
             G3.Algo_20170126_1();
