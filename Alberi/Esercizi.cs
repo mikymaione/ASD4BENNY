@@ -14,6 +14,106 @@ namespace Alberi
 
         public Esercizi(int k) : base(k) { }
 
+
+        public static BST Algo_20180125_1(BST T, int l)
+        {
+            if (T != null && l >= 0)
+            {
+                Console.WriteLine($"K: {T.key} L: {l}");
+
+                var X = new BST(T.key);
+                X.dx = Algo_20180125_1(T.dx, l - 1);
+                X.sx = Algo_20180125_1(T.sx, l - 1);
+
+                Console.WriteLine($"P: {T.key} L: {l}");
+
+                return X;
+            }
+
+            return null;
+        }
+
+        public static BST Algo_20180125_1_Miky(BST T, int l)
+        {
+            BST curr = T;
+            BST last = null;
+            BST next = null;
+
+            BST X = null;
+            BST PX = null;
+
+            var S = new Stack<BST>();
+            var SX = new Stack<BST>();
+            var SPX = new Stack<BST>();
+            var SL = new Stack<int>();
+
+            while (S.Count > 0 || curr != null)
+            {
+                if (curr != null)
+                {
+                    //discesa dx
+                    next = curr.dx;
+
+                    SPX.Push(X);
+                    X = new BST(curr.key);
+
+                    S.Push(curr);
+                    SL.Push(l);
+                    SX.Push(X);
+
+                    Console.WriteLine($"K: {curr.key} L: {l}");
+                    l--;
+                }
+                else
+                {
+                    curr = S.Peek(); //risalita
+                    l = SL.Peek();
+                    X = SX.Peek();
+                    PX = SPX.Peek();
+
+                    if (curr.sx != null && curr.sx != last)
+                    {
+                        //discesa a sx                        
+                        next = curr.sx;
+                        l--;
+                    }
+                    else
+                    {
+                        //risale da sx o da sx vuoto                        
+
+                        next = null;
+                        S.Pop();
+                        SL.Pop();
+                        SX.Pop();
+                        SPX.Pop();
+
+                        Console.WriteLine($"P: {curr.key} L: {l}");
+
+                        if (PX != null)
+                        {
+                            last = S.Peek();
+
+                            if (curr == last?.sx)
+                                PX.sx = X;
+                            else
+                                PX.dx = X;
+                        }
+                    }
+                }
+
+                last = curr; //applica operazione di discesa
+                curr = next; //o di risalita              
+
+                if (l < 0)
+                {
+                    last = last?.sx;
+                    curr = null;                                  
+                }
+            }
+
+            return X;
+        }
+
         public static int Algo_20170224_2(BST T, BST P, int x)
         {
             if (T == null)
@@ -80,7 +180,7 @@ namespace Alberi
                         next = null;
                         S.Pop();
 
-                        P = (S.Count > 0 ? S.Peek() : null);                        
+                        P = (S.Count > 0 ? S.Peek() : null);
 
                         if (ero_destro)
                         {
@@ -120,7 +220,7 @@ namespace Alberi
             }
 
             return ret;
-        }        
+        }
 
         public static void Algo_MarcoErnestoFiorillo(BST T)
         {

@@ -14,7 +14,28 @@ namespace Alberi
 
         static void Main(string[] args)
         {
-            Main_20170224_2(args);
+            Main20180125_1(args);
+        }
+
+        static void Main20180125_1(string[] args)
+        {
+            //var n = new int[] { 8, 3, 10, 1, 6, 4, 7, 14, 13 };
+            var n = new int[] { 50, 66, 25, 12, 8, 1, 7, 70, 55, 68, 32, 51, 58, 97, 81, 28, 30, 31, 63, 67, 71, 82, 98, 99 };
+
+            var T1 = new BST(n);
+            var T2 = new BST(n);
+            var l = 4;
+
+            Console.WriteLine("\nT1:");
+            var ret1 = Esercizi.Algo_20180125_1(T1, l);
+            Console.WriteLine("\nX1:");
+            ret1?.Stampa();
+
+
+            Console.WriteLine("\nT2:");
+            var ret2 = Esercizi.Algo_20180125_1_Miky(T2, l);
+            Console.WriteLine("\nX2:");
+            ret2?.Stampa();
         }
 
         static void MainAlgo_MarcoErnestoFiorillo(string[] args)
@@ -240,7 +261,7 @@ namespace Alberi
 
             var T1 = new BST(n);
             var T2 = new BST(n);
-            
+
             Console.WriteLine("\nRicorsivo:");
             var ret = Esercizi.Algo_20170224_2(T1, null, x);
 
