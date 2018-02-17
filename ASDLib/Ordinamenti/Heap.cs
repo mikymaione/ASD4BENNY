@@ -61,7 +61,7 @@ namespace Ordinamenti
             var R = Right(i);
 
             if (L <= HeapSize_ && A[L - 1] > A[max - 1])
-                max = L;            
+                max = L;
 
             if (R <= HeapSize_ && A[R - 1] > A[max - 1])
                 max = R;
@@ -71,27 +71,6 @@ namespace Ordinamenti
                 Swap(i, max);
                 MaxHeapify(max);
             } // è già maxheap esci
-        }
-
-        private void MaxHeapify2(int i)
-        {
-            var max = 0;
-            var L = Left(i);
-            var R = Right(i);
-
-            if (L <= HeapSize_ && A[L - 1] > A[i - 1])
-                max = L;
-            else
-                max = i;
-
-            if (R <= HeapSize_ && A[R - 1] > A[max - 1])
-                max = R;
-
-            if (max != i)
-            {
-                Swap(i, max);
-                MaxHeapify(max);
-            }
         }
 
         private void Swap(int x, int y)

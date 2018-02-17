@@ -64,22 +64,22 @@ namespace Ordinamenti
             //InsertionSort.Sort(C);
             //InsertionSort.Sort(D);
 
-            MergeSort_Cormen.Sort(A);
-            MergeSort_Cormen.Sort(B);
-            MergeSort_Cormen.Sort(C);
-            MergeSort_Cormen.Sort(D);
+            //MergeSort_Cormen.Sort(A);
+            //MergeSort_Cormen.Sort(B);
+            //MergeSort_Cormen.Sort(C);
+            //MergeSort_Cormen.Sort(D);
 
             //MergeSort.Sort(A);
             //MergeSort.Sort(B);
             //MergeSort.Sort(C);
             //MergeSort.Sort(D);
 
-            Stampa("A", A);
-            Stampa("B", B);
-            Stampa("C", C);
-            Stampa("D", D);
+            //Stampa("A", A);
+            //Stampa("B", B);
+            //Stampa("C", C);
+            //Stampa("D", D);
 
-            /*
+
             var X = new int[] { 4, 5, 6, 1, 2, 3, 8, 9, 0, 7 };
             Stampa("X", X);
             var heap = new Heap(X);
@@ -97,7 +97,7 @@ namespace Ordinamenti
             var heap3 = new Heap(Z);
             heap3.BuildMaxHeap();
             Stampa("Heap di Z", heap3.array);
-            */
+
         }
 
         static int[] RandomArray(int n)
