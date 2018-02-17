@@ -64,15 +64,15 @@ namespace Ordinamenti
             //InsertionSort.Sort(C);
             //InsertionSort.Sort(D);
 
-            //MergeSort_Cormen.Sort(A);
-            //MergeSort_Cormen.Sort(B);
-            //MergeSort_Cormen.Sort(C);
-            //MergeSort_Cormen.Sort(D);
+            MergeSort_Cormen.Sort(A);
+            MergeSort_Cormen.Sort(B);
+            MergeSort_Cormen.Sort(C);
+            MergeSort_Cormen.Sort(D);
 
-            MergeSort.Sort(A);
-            MergeSort.Sort(B);
-            MergeSort.Sort(C);
-            MergeSort.Sort(D);
+            //MergeSort.Sort(A);
+            //MergeSort.Sort(B);
+            //MergeSort.Sort(C);
+            //MergeSort.Sort(D);
 
             Stampa("A", A);
             Stampa("B", B);

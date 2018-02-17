@@ -8,13 +8,14 @@ namespace Ordinamenti
 {
     public class InsertionSort
     {
+        private static int K, i, j;
 
         public static void Sort(int[] A)
         {
-            for (var j = 0; j < A.Length; j++)
+            for (j = 0; j < A.Length; j++)
             {
-                var K = A[j];
-                var i = j - 1;
+                K = A[j];
+                i = j - 1;
 
                 while (i > -1 && A[i] > K)
                 {

@@ -10,6 +10,8 @@ namespace Ordinamenti
 {
     public class MergeSort_Cormen
     {
+        private static int k, l, r, maxL, maxR;
+        private static int[] L, R;
 
         public static void Sort(int[] A)
         {
@@ -29,14 +31,14 @@ namespace Ordinamenti
 
         private static void Merge(int[] A, int inizio, int centro, int fine)
         {
-            var l = 0;
-            var r = 0;
+            l = 0;
+            r = 0;
 
-            var maxL = centro - inizio + 1;
-            var maxR = fine - centro;
+            maxL = centro - inizio + 1;
+            maxR = fine - centro;
 
-            var L = new int[maxL + 1];
-            var R = new int[maxR + 1];
+            L = new int[maxL + 1];
+            R = new int[maxR + 1];
 
             L[maxL] = int.MaxValue;
             R[maxR] = int.MaxValue;
@@ -44,7 +46,7 @@ namespace Ordinamenti
             Array.Copy(A, inizio - 1, L, 0, maxL);
             Array.Copy(A, centro, R, 0, maxR);
 
-            for (var k = inizio - 1; k < fine; k++)
+            for (k = inizio - 1; k < fine; k++)
                 if (L[l] <= R[r])
                 {
                     A[k] = L[l];
