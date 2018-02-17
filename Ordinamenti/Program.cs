@@ -56,18 +56,28 @@ namespace Ordinamenti
             var C = RandomArray(37);
             var D = new int[] { 5, 4, 3, 2, 1 };
 
-            QSNL();
-            QSTH();
+            //QSNL();
+            //QSTH();
 
             //InsertionSort.Sort(A);
             //InsertionSort.Sort(B);
-            //MergeSort_Cormen.Sort(A);
-            //MergeSort_Cormen.Sort(B);
-            //MergeSort_Cormen.Sort(C);
+            //InsertionSort.Sort(C);
+            //InsertionSort.Sort(D);
 
             //MergeSort_Cormen.Sort(A);
             //MergeSort_Cormen.Sort(B);
-            //MergeSort_Cormen.Sort(C);         
+            //MergeSort_Cormen.Sort(C);
+            //MergeSort_Cormen.Sort(D);
+
+            MergeSort.Sort(A);
+            MergeSort.Sort(B);
+            MergeSort.Sort(C);
+            MergeSort.Sort(D);
+
+            Stampa("A", A);
+            Stampa("B", B);
+            Stampa("C", C);
+            Stampa("D", D);
 
             /*
             var X = new int[] { 4, 5, 6, 1, 2, 3, 8, 9, 0, 7 };
