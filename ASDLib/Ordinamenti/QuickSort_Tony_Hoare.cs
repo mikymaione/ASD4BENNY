@@ -9,7 +9,7 @@ namespace Ordinamenti
     public class QuickSort_Tony_Hoare
     {
 
-        private static int temp, pivot, i, j, p;
+        private static int temp, x, i, j;
 
         public static void Sort(int[] A) // Θ(n log n) → Θ(n²)
         {
@@ -20,29 +20,29 @@ namespace Ordinamenti
         {
             if (l < r)
             {
-                p = Partition(A, l, r);
+                var p = Partition(A, l, r);
                 Quicksort(A, l, p);
                 Quicksort(A, p + 1, r);
             }
         }
 
-        private static int Partition(int[] A, int lo, int hi) // Θ(n)
+        private static int Partition(int[] A, int l, int r) // Θ(n)
         {
-            pivot = A[lo];
-            i = lo - 1;
-            j = hi + 1;
+            x = A[l];
+            i = l - 1;
+            j = r + 1;
 
             while (true)
             {
                 do
                 {
                     i++;
-                } while (A[i] < pivot);
+                } while (A[i] < x);
 
                 do
                 {
                     j--;
-                } while (A[j] > pivot);
+                } while (A[j] > x);
 
                 if (i >= j)
                     return j;

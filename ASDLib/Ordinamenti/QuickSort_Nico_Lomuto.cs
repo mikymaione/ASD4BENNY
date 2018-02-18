@@ -9,7 +9,7 @@ namespace Ordinamenti
     public class QuickSort_Nico_Lomuto
     {
 
-        private static int temp, pivot, i, j, p;
+        private static int temp, x, i, j;
 
         public static void Sort(int[] A) // Θ(n log n) → Θ(n²)
         {
@@ -20,7 +20,7 @@ namespace Ordinamenti
         {
             if (l < r)
             {
-                p = Partition(A, l, r);
+                var p = Partition(A, l, r);
                 Quicksort(A, l, p - 1);
                 Quicksort(A, p + 1, r);
             }
@@ -28,11 +28,11 @@ namespace Ordinamenti
 
         private static int Partition(int[] A, int l, int r) // Θ(n)
         {
-            pivot = A[r];
+            x = A[r];
             i = l - 1;
 
             for (j = l; j < r; j++)
-                if (A[j] <= pivot)
+                if (A[j] <= x)
                     Swap(A, i += 1, j);
 
             Swap(A, i += 1, r);

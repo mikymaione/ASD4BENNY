@@ -56,7 +56,7 @@ namespace Ordinamenti
             var C = RandomArray(37);
             var D = new int[] { 5, 4, 3, 2, 1 };
 
-            //QSNL();
+            QSNL();
             //QSTH();
 
             //InsertionSort.Sort(A);
@@ -74,29 +74,29 @@ namespace Ordinamenti
             //MergeSort.Sort(C);
             //MergeSort.Sort(D);
 
-            //Stampa("A", A);
-            //Stampa("B", B);
-            //Stampa("C", C);
-            //Stampa("D", D);
+            ////Stampa("A", A);
+            ////Stampa("B", B);
+            ////Stampa("C", C);
+            ////Stampa("D", D);
 
 
-            var X = new int[] { 4, 5, 6, 1, 2, 3, 8, 9, 0, 7 };
-            Stampa("X", X);
-            var heap = new Heap(X);
-            heap.BuildMaxHeap();
-            Stampa("Heap di X", heap.array);
+            //var X = new int[] { 4, 5, 6, 1, 2, 3, 8, 9, 0, 7 };
+            //Stampa("X", X);
+            //var heap = new Heap(X);
+            //heap.BuildMaxHeap();
+            //Stampa("Heap di X", heap.array);
 
-            var Y = RandomArray(30);
-            Stampa("Y", Y);
-            var heap2 = new Heap(Y);
-            heap2.HeapSort();
-            Stampa("HeapSort di Y", heap2.array);
+            //var Y = RandomArray(30);
+            //Stampa("Y", Y);
+            //var heap2 = new Heap(Y);
+            //heap2.HeapSort();
+            //Stampa("HeapSort di Y", heap2.array);
 
-            var Z = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            Stampa("Z", X);
-            var heap3 = new Heap(Z);
-            heap3.BuildMaxHeap();
-            Stampa("Heap di Z", heap3.array);
+            //var Z = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            //Stampa("Z", X);
+            //var heap3 = new Heap(Z);
+            //heap3.BuildMaxHeap();
+            //Stampa("Heap di Z", heap3.array);
 
         }
 
