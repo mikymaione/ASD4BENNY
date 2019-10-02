@@ -155,12 +155,11 @@ namespace Alberi
 
         static void Main20170628_2_2_RND(string[] args)
         {
-            var rnd = new Random(DateTime.Now.Second);
-            var max = rnd.Next(10, 500);
+            var max = ASDLib.GB.RndNumber(10, 500);
             var N = new List<int>();
 
             for (var i = 0; i < max; i++)
-                N.Add(rnd.Next(0, 999));
+                N.Add(ASDLib.GB.RndNumber(0, 999));
 
             var T1 = new BST(N);
             var T2 = new BST(N);
@@ -271,12 +270,11 @@ namespace Alberi
 
         static void MainCountOddRic(string[] args)
         {
-            var rnd = new Random(DateTime.Now.Second);
-            var max = rnd.Next(10, 500);
-            var T = new BST(rnd.Next(0, 999));
+            var max = ASDLib.GB.RndNumber(10, 500);
+            var T = new BST(ASDLib.GB.RndNumber(0, 999));
 
             for (var i = 0; i < max; i++)
-                T.Inserisci(rnd.Next(0, 999));
+                T.Inserisci(ASDLib.GB.RndNumber(0, 999));
 
             T.Stampa();
 

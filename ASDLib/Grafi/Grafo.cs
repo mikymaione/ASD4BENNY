@@ -28,8 +28,53 @@ namespace Grafi
             Nome = nome;
         }
 
+        public static Grafo Grafo_Random(uint min_vertices, uint max_vertices, uint min_edges_for_vertex, uint max_edges_for_vertex, uint min_edges, uint max_edges) //O(E)
+        {
+            uint n_edges_for_this_node, dest_node;
+
+            if (min_vertices < 2)
+                min_vertices = 2;
+
+            if (min_vertices > max_vertices)
+                max_vertices = min_vertices + 1;
+
+            var n_vertices = ASDLib.GB.RndNumber(min_vertices, max_vertices);
+
+            if (max_edges_for_vertex > n_vertices)
+                max_edges_for_vertex = n_vertices;
+
+            if (min_edges_for_vertex > max_edges_for_vertex)
+                min_edges_for_vertex = max_edges_for_vertex;
+
+            var possible_max_edges = n_vertices * max_edges_for_vertex;
+
+            if (max_edges > possible_max_edges)
+                max_edges = possible_max_edges;
+
+            var n_edges = (min_edges < max_edges ? ASDLib.GB.RndNumber(min_edges, max_edges) : max_edges);
+            var min_edge_to_protect = min_edges_for_vertex * n_vertices;
+
+            if (n_edges < min_edge_to_protect)
+                n_edges = min_edge_to_protect;
+
+            var foo = new Grafo("Grafo Random");
+
+            for (var v = 0u; v < n_vertices; v++)
+            {
+                n_edges_for_this_node = ASDLib.GB.RndNumber(min_edges_for_vertex, max_edges_for_vertex);
+
+                for (uint e = 0; e < n_edges_for_this_node; e++)
+                {
+                    dest_node = ASDLib.GB.RndNumber<uint>(0, n_vertices);
+                    foo.add_edge(v, dest_node);
+                }
+            }
+
+            return foo;
+        }
+
         public Nodo get_nodo(dynamic i)
-        {            
+        {
             foreach (var n in V)
                 if (n.N.Equals(i))
                     return n;
@@ -83,7 +128,7 @@ namespace Grafi
         public void StampaNodi()
         {
             foreach (var n in V)
-                Console.WriteLine("{0} | d: {1} | f: {2}", n.N, n.discovered, n.finished);            
+                Console.WriteLine("{0} | d: {1} | f: {2}", n.N, n.discovered, n.finished);
         }
 
         public void Stampa()
@@ -218,7 +263,7 @@ namespace Grafi
             Console.WriteLine();
         }
 
-        public void DFS() //Θ(|V| + |E|)
+        public int DFS() //Θ(|V| + |E|)
         {
             var time = 0;
 
@@ -226,6 +271,8 @@ namespace Grafi
             foreach (var v in V)
                 if (v.color == Nodo.Color.White)
                     DFS_Visita(v, ref time);
+
+            return time;
         }
 
         public void DFS_Visita(dynamic u, int start_time = 0) //Θ(|E|)
@@ -269,7 +316,7 @@ namespace Grafi
             paths.Push(s);
 
             if (s == e)
-            {       
+            {
                 var z = "";
                 foreach (var x in paths)
                     z = x.N + " > " + z;
@@ -279,7 +326,7 @@ namespace Grafi
             {
                 foreach (var i in Adj[s])
                     if (i.color == Nodo.Color.White)
-                        KPaths(i, e, paths);                    
+                        KPaths(i, e, paths);
             }
 
             paths.Pop();
@@ -332,12 +379,12 @@ namespace Grafi
                     L.Push(u);
                 }
             };
-                    
+
             Action<Grafo, Nodo, Nodo, List<Nodo>> Assign = null;
             Assign = (GT, u, root, lista) =>
             {
                 if (u.color != Nodo.Color.Black)
-                {                        
+                {
                     if (u == root)
                     {
                         lista = new List<Nodo>();

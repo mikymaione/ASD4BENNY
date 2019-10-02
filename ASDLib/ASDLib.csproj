@@ -36,6 +36,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Grafi\Grafo.cs" />
     <Compile Include="Grafi\Nodo.cs" />

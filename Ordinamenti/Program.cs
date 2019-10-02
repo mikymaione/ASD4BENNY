@@ -9,9 +9,7 @@ using System;
 namespace Ordinamenti
 {
     class Program
-    {
-
-        private static Random rnd = new Random(DateTime.Now.Second);
+    {        
 
         static void QSTH()
         {
@@ -105,7 +103,7 @@ namespace Ordinamenti
             var A = new int[n];
 
             for (var i = 0; i < n; i++)
-                A[i] = rnd.Next(0, 99);
+                A[i] = ASDLib.GB.RndNumber(0, 99);
 
             return A;
         }
