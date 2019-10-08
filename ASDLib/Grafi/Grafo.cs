@@ -28,10 +28,8 @@ namespace Grafi
             Nome = nome;
         }
 
-        public static Grafo Grafo_Random(uint min_vertices, uint max_vertices, uint min_edges_for_vertex, uint max_edges_for_vertex, uint min_edges, uint max_edges) //O(E)
+        public static Grafo Grafo_Random(string nome, uint min_vertices, uint max_vertices, uint min_edges_for_vertex, uint max_edges_for_vertex, uint min_edges, uint max_edges) //O(E)
         {
-            uint n_edges_for_this_node, dest_node;
-
             if (min_vertices < 2)
                 min_vertices = 2;
 
@@ -57,20 +55,20 @@ namespace Grafi
             if (n_edges < min_edge_to_protect)
                 n_edges = min_edge_to_protect;
 
-            var foo = new Grafo("Grafo Random");
+            var G = new Grafo(nome);
 
             for (var v = 0u; v < n_vertices; v++)
             {
-                n_edges_for_this_node = ASDLib.GB.RndNumber(min_edges_for_vertex, max_edges_for_vertex);
+                var n_edges_for_this_node = ASDLib.GB.RndNumber(min_edges_for_vertex, max_edges_for_vertex);
 
-                for (uint e = 0; e < n_edges_for_this_node; e++)
+                for (var e = 0u; e < n_edges_for_this_node; e++)
                 {
-                    dest_node = ASDLib.GB.RndNumber<uint>(0, n_vertices);
-                    foo.add_edge(v, dest_node);
+                    var dest_node = ASDLib.GB.RndNumber(0u, n_vertices);
+                    G.add_edge(v, dest_node);
                 }
             }
 
-            return foo;
+            return G;
         }
 
         public Nodo get_nodo(dynamic i)

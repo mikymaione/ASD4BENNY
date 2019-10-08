@@ -15,7 +15,10 @@ namespace Grafi
         {
             System.Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            Main1(args);
+            var G = Grafo.Grafo_Random("Grafo Random", 3, 10, 0, 5, 15, 50);
+            G.Stampa();
+
+            //Main1(args);
         }
 
         static void MainAlg_20160219(string[] args)
