@@ -4,6 +4,7 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+using System;
 using System.Collections.Generic;
 
 namespace Grafi
@@ -13,12 +14,19 @@ namespace Grafi
 
         static void Main(string[] args)
         {
-            System.Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            var G = Grafo.Grafo_Random("Grafo Random", 3, 10, 0, 5, 15, 50);
-            G.Stampa();
+            var E_DAG5 = new dynamic[,]
+            {
+                { 1, 2 },
+                { 2, 3 },
+                { 3, 4 },
+                { 4, 5 },
+                { 1, 3 },
+                { 3, 5 },
+            };
 
-            //Main1(args);
+
         }
 
         static void MainAlg_20160219(string[] args)
