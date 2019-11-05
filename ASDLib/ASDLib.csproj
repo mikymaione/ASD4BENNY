@@ -36,6 +36,9 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FibonacciHeap\Constants.cs" />
+    <Compile Include="FibonacciHeap\FibonacciHeap.cs" />
+    <Compile Include="FibonacciHeap\FibonacciHeapNode.cs" />
     <Compile Include="GB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Grafi\Grafo.cs" />
